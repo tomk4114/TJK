@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<title>
+		Register
+	</title>
+	<link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./Scripts/Misc.js"></script>
+</head>
+<body>
+    <form method="get" action="Register.html" id="ctl01">
+	    <div class="page">
+	        <div class="header">
+	            <div class="title">
+	                <h1>
+	                    TJK<span class="tit">w</span> - Consulting & Research
+	                </h1>
+	            </div>
+	            <div class="loginDisplay">
+                	[ <a href="Log_In.html" id="HeadLoginView_HeadLoginStatus">Log In</a> ]
+	            </div>
+	            <div class="clear hideSkiplink"> 
+		    		<div class="menu" id="NavigationMenu">
+						<ul>
+							<li class="level1"><a href="Index.html">Home</a></li>
+							<li class="level1"><a href="About.html">About</a></li>
+							<li class="level1"><a href="Run.html">Sandbox</a></li>
+							<li class="level1"><a href="Contact.html">Contact Us</a></li>
+						</ul>
+					</div>
+				</div> 
+	        </div>
+        <div class="main">
+	        <h2>
+	            Create a New Account
+	        </h2>
+	        <p>
+	            Use the form below to create a new account.
+	        </p>
+	        <p>
+	            Passwords are required to be a minimum of 6 characters in length.
+	        </p>
+	        <span class="failureNotification">
+	            
+	        </span>
+	        <div id="MainContent_RegisterUser_CreateUserStepContainer_RegisterUserValidationSummary" class="failureNotification" style="display:none;">
+			</div>
+	        <div class="accountInfo">
+	            <fieldset class="register">
+	                <legend>Account Information</legend>
+	                <p>
+	                    <label for="UserName" id="UserNameLabel">User Name:</label>
+	                    <input name="UserName" type="text" id="UserName" class="textEntry" />
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_UserNameRequired" title="User Name is required." class="failureNotification" style="visibility:hidden;">*</span>
+	                </p>
+	                <p>
+	                    <label for="Email" id="EmailLabel">E-mail:</label>
+	                    <input name="Email" type="text" id="Email" class="textEntry" />
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_EmailRequired" title="E-mail is required." class="failureNotification" style="visibility:hidden;">*</span>
+	                </p>
+	                <p>
+	                    <label for="Password" id="PasswordLabel">Password:</label>
+	                    <input name="Password" type="password" id="Password" class="passwordEntry" />
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired" title="Password is required." class="failureNotification" style="visibility:hidden;">*</span>
+	                </p>
+	                <p>
+	                    <label for="ConfirmPassword" id="ConfirmPasswordLabel">Confirm Password:</label>
+	                    <input name="ConfirmPassword" type="password" id="ConfirmPassword" class="passwordEntry" />
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired" title="Confirm Password is required." class="failureNotification" style="display:none;">*</span>
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_PasswordCompare" class="failureNotification" style="display:none;">*</span>
+	                </p>
+	            </fieldset>
+	            <p class="submitButton">
+	                <input type="submit" name="CreateUserButton" value="Create User" />
+	            </p>
+	        </div>
+        </div>
+        <div class="clear">
+        </div>
+    	</div>
+    	<div class="footer">
+	</form>
+</body>
+</html>
