@@ -1,0 +1,73 @@
+.tjkNVText 
+{
+	font-family: verdana, arial, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 25px;
+	padding-left: 6px;
+}
+
+.tjkNV 
+{
+	background-color: #003366;
+	color: #ffffff;
+	cursor: pointer;
+	text-align: center; 
+}
+
+TR.tjkNR TD.tjkNV A:link 		/* unvisited link */
+{
+	color: #ffffff;
+	text-decoration: none;
+	
+}
+
+TR.tjkNR TD.tjkNV A:visited 	/* visited link */
+{
+	color: #ffffff;
+	text-decoration: none;
+	
+}
+
+TR.tjkNR TD.tjkNV a:active  	/* selected link */
+{
+	color: #ffffff; 
+	text-decoration: none;
+	
+}
+
+TR.tjkNR TD.tjkNV a:hover   	/* mouse over link */
+{
+	color: #ffffff; 
+	text-decoration: none;
+	
+}
+
+TR.tjkNR TD 
+{
+	vertical-align: middle;
+	border: 2px solid;
+	border-color: #336699 #000033 #000033;
+	border-left: None;
+}
+
+TR.tjkNR TD.bord 
+{
+	background-color: #336699;
+	border-right: none;
+}
+
+TR.tjkNVHiliteRow TD 
+{
+	vertical-align: middle;
+	border: 1px solid;
+	border-color: #ff6666 #660000 #660000;
+	border-left: none;
+}
+
+TR.tjkNVHiliteRow TD.bord
+{
+	background-color: #ff6666;
+	border-right: none;
+}
+
