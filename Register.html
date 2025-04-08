@@ -8,8 +8,8 @@
 	<script type="text/javascript" src="./Scripts/Misc.js"></script>
 </head>
 <body>
-    <form method="get" action="Register.html" id="ctl01">
-	    <div class="page">
+    <form method="post" action="Congrats.html" id="ctl01" >
+ 	    <div class="page">
 	        <div class="header">
 	            <div class="title">
 	                <h1>
@@ -40,38 +40,32 @@
 	        <p>
 	            Passwords are required to be a minimum of 6 characters in length.
 	        </p>
-	        <span class="failureNotification">
-	            
-	        </span>
-	        <div id="MainContent_RegisterUser_CreateUserStepContainer_RegisterUserValidationSummary" class="failureNotification" style="display:none;">
-			</div>
 	        <div class="accountInfo">
 	            <fieldset class="register">
 	                <legend>Account Information</legend>
 	                <p>
 	                    <label for="UserName" id="UserNameLabel">User Name:</label>
 	                    <input name="UserName" type="text" id="UserName" class="textEntry" />
-	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_UserNameRequired" title="User Name is required." class="failureNotification" style="visibility:hidden;">*</span>
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_UserNameRequired" title="User Name is required." class="failureNotification" style="visibility:hidden;">* User Name is required.</span>
 	                </p>
 	                <p>
 	                    <label for="Email" id="EmailLabel">E-mail:</label>
 	                    <input name="Email" type="text" id="Email" class="textEntry" />
-	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_EmailRequired" title="E-mail is required." class="failureNotification" style="visibility:hidden;">*</span>
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_EmailRequired" title="E-mail is required." class="failureNotification" style="visibility:hidden;">* Email is invalid.</span>
 	                </p>
 	                <p>
 	                    <label for="Password" id="PasswordLabel">Password:</label>
 	                    <input name="Password" type="password" id="Password" class="passwordEntry" />
-	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired" title="Password is required." class="failureNotification" style="visibility:hidden;">*</span>
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired" title="Password is required." class="failureNotification" style="visibility:hidden;">* Password is required.</span>
 	                </p>
 	                <p>
 	                    <label for="ConfirmPassword" id="ConfirmPasswordLabel">Confirm Password:</label>
 	                    <input name="ConfirmPassword" type="password" id="ConfirmPassword" class="passwordEntry" />
-	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired" title="Confirm Password is required." class="failureNotification" style="display:none;">*</span>
-	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_PasswordCompare" class="failureNotification" style="display:none;">*</span>
+	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired" title="Confirm Password is required." class="failureNotification" style="visibility:hidden;">* Passwords do not match.</span>
 	                </p>
 	            </fieldset>
 	            <p class="submitButton">
-	                <input type="submit" name="CreateUserButton" value="Create User" />
+	                <input type="button" name="CreateUserButton" value="Create User" onClick="javascript: return validateForm();"/>
 	            </p>
 	        </div>
         </div>
@@ -80,5 +74,44 @@
     	</div>
     	<div class="footer">
 	</form>
+	<script>
+		function validateForm() {
+		  let name = document.getElementById("UserName").value;
+		  let pass = document.getElementById("Password").value;
+		  let confirmpass = document.getElementById("ConfirmPassword").value;
+		  let email = document.getElementById("Email").value;
+		  let myReturn = true;
+		  if (name === "") {
+		    const element = document.getElementById("MainContent_RegisterUser_CreateUserStepContainer_UserNameRequired");
+		  	element.style.visibility = "visible";
+		  	myReturn = false;
+		  }
+		  if (pass === "") {
+		    const element = document.getElementById("MainContent_RegisterUser_CreateUserStepContainer_PasswordRequired");
+		  	element.style.visibility = "visible";
+		  	myReturn = false;
+		  } 
+		  // Basic email validation using regular expression
+		  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+		  const isValid = emailRegex.test(email);
+		  if (!isValid) {
+		    const element = document.getElementById("MainContent_RegisterUser_CreateUserStepContainer_EmailRequired");
+		  	element.style.visibility = "visible";
+		  	myReturn = false;
+		  } 
+		  if (pass !== confirmpass) {
+		    const element = document.getElementById("MainContent_RegisterUser_CreateUserStepContainer_ConfirmPasswordRequired");
+		  	element.style.visibility = "visible";
+		    myReturn = false;
+		  } 
+		  if (myReturn == false){
+		  	return false;
+		  } else {
+		  	// If all validations pass, return true to submit the form
+		  	document.getElementById("ctl01").submit();
+  			return true;
+  		  }
+  		}
+	</script>
 </body>
-</html>
+</html
