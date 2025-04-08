@@ -7,8 +7,8 @@
 	<link href="Styles/Site.css" rel="stylesheet" type="text/css" />
 	<script type="text/javascript" src="./Scripts/Misc.js"></script>
 </head>
-<body>
-    <form method="get" action="Contact.html" id="ctl01">
+<body onload="getStatus()">
+    <form method="get" action="Thanks.html" id="ctl01">
 	    <div class="page">
 	        <div class="header">
 	            <div class="title">
@@ -48,21 +48,19 @@
 	                <p>
 	                    <label for="UserName" id="UserNameLabel">Name:</label>
 	                    <input name="UserName" type="text" id="UserName" class="textEntry" />
-	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_UserNameRequired" title="User Name is required." class="failureNotification" style="visibility:hidden;">*</span>
-	                </p>
+						<span id="MainContent_Contact_UserNameRequired" title="User Name is required." class="failureNotification" style="visibility:hidden;">* Name is required.</span>	                </p>
 	                <p>
 	                    <label for="Email" id="EmailLabel">E-mail:</label>
 	                    <input name="Email" type="text" id="Email" class="textEntry" />
-	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_EmailRequired" title="E-mail is required." class="failureNotification" style="visibility:hidden;">*</span>
+                        <span id="MainContent_Contact_EmailRequired" title="Email is required." class="failureNotification" style="visibility:hidden;">* Email is invalid.</span>
 	                </p>
 	                <p>
 	                    <label for="Phone" id="PhoneLabel">Phone:</label>
 	                    <input name="Phone" type="text" id="Phone" class="textEntry" />
-	                    <span id="MainContent_RegisterUser_CreateUserStepContainer_EmailRequired" title="Phone is optional." class="failureNotification" style="visibility:hidden;">*</span>
 	                </p>
 	            </fieldset>
 	            <p class="submitButton">
-	                <input type="submit" name="ContactusButton" value="Submit" />
+	                <input type="button" name="ContactusButton" value="Submit" onClick="javascript: return validateForm();"/>
 	            </p>
 	        </div>
         </div>
@@ -71,5 +69,32 @@
     	</div>
     	<div class="footer">
 	</form>
+	<script>
+		function validateForm() {
+		  let name = document.getElementById("UserName").value;
+		  let email = document.getElementById("Email").value;
+		  let myReturn = true;
+		  if (name === "") {
+		    const element = document.getElementById("MainContent_Contact_UserNameRequired");
+		  	element.style.visibility = "visible";
+		  	myReturn = false;
+		  }
+		  // Basic email validation using regular expression
+		  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+		  const isValid = emailRegex.test(email);
+		  if (!isValid) {
+		    const element = document.getElementById("MainContent_Contact_EmailRequired");
+		  	element.style.visibility = "visible";
+		  	myReturn = false;
+		  } 
+		  if (myReturn == false){
+		  	return false;
+		  } else {
+		  	// If all validations pass, return true to submit the form
+		  	document.getElementById("ctl01").submit();
+  			return true;
+  		  }
+  		}
+	</script>
 </body>
 </html>
