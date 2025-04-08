@@ -1,11 +1,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head><title>
-	Log In
-</title><link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+<head>
+	<title>
+		Log In
+	</title>
+	<link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="./Scripts/Misc.js"></script>
 </head>
-<body>
-    <form method="get" action="Register.html" id="ctl01">
+<body onload="chkStatus()";>
+    <form method="get" action="index.html" id="ctl01">
 	    <div class="page">
 	        <div class="header">
 	            <div class="title">
@@ -14,7 +17,7 @@
 	                </h1>
 	            </div>
 	            <div class="loginDisplay">
-                	[ <a href="Log_In.html" id="HeadLoginView_HeadLoginStatus">Log In</a> ]
+                	[ <a href="Log_In.html" id="HeadLoginView_HeadLoginStatus" >Log In</a> ]
 	            </div>
 	            <div class="clear hideSkiplink"> 
 		    		<div class="menu" id="NavigationMenu">
@@ -35,25 +38,20 @@
         Please enter your username and password.
         <a id="MainContent_RegisterHyperLink" href="Register.html">Register</a> if you don't have an account.
     </p>
-    
-            <span class="failureNotification">
-                
-            </span>
-            <div id="MainContent_LoginUser_LoginUserValidationSummary" class="failureNotification" style="display:none;">
-
-			</div>
             <div class="accountInfo">
                 <fieldset class="login">
                     <legend>Account Information</legend>
                     <p>
                         <label for="UserName" id="UserNameLabel">Username:</label>
                         <input name="UserName" type="text" id="UserName" class="textEntry" />
-                        <span id="MainContent_LoginUser_UserNameRequired" title="User Name is required." class="failureNotification" style="visibility:hidden;">*</span>
+                        <span id="MainContent_LoginUser_UserNameRequired" title="User Name is required." class="failureNotification" style="visibility:hidden;">* User Name is required.</span>
                     </p>
                     <p>
                         <label for="Password" id="PasswordLabel">Password:</label>
                         <input name="Password" type="password" id="Password" class="passwordEntry" />
-                        <span id="MainContent_LoginUser_PasswordRequired" title="Password is required." class="failureNotification" style="visibility:hidden;">*</span>
+                        <span id="MainContent_LoginUser_PasswordRequired" title="Password is required." class="failureNotification" style="visibility:hidden;">* Password is required.</span>
+                        <span id="MainContent_LoginUser_Passwordmin" class="failureNotification" style="visibility:hidden;"><br>* Password must be at least 8 characters long.</span>
+                        <span id="MainContent_LoginUser_Passwordmax" class="failureNotification" style="visibility:hidden;"><br>* Password cannot exceed 20 characters.</span>
                     </p>
                      <p>
                         <label for="Email" id="EmailLabel">Email:</label>
@@ -66,11 +64,9 @@
                     </p>
                 </fieldset>
                 <p class="submitButton">
-                    <input type="submit" name="LoginButton" value="Log In" id="User_LoginButton" />
+                    <input type="button" name="LoginButton" value="Log In" id="User_LoginButton" onclick="validateForm()"  />
                 </p>
             </div>
-        
-
         </div>
         <div class="clear">
         </div>
@@ -79,5 +75,40 @@
         
     </div>
 </form>
+	<script>
+		function validateForm() {
+		  let name = document.getElementById("UserName").value;
+		  let pass = document.getElementById("Password").value;
+		  let myReturn = true;
+		  if (name === "") {
+		    const element = document.getElementById("MainContent_LoginUser_UserNameRequired");
+		  	element.style.visibility = "visible";
+		  	myReturn = false;
+		  }
+		  if (pass === "") {
+		    const element = document.getElementById("MainContent_LoginUser_PasswordRequired");
+		  	element.style.visibility = "visible";
+		  	myReturn = false;
+		  }
+		  if (pass.length <= 7) {
+		  	const element = document.getElementById("MainContent_LoginUser_Passwordmin");
+		  	element.style.visibility = "visible";
+		  	myReturn = false;
+  			} else if (pass.length >= 20) {
+  				const element = document.getElementById("MainContent_LoginUser_Passwordmax");
+		  		element.style.visibility = "visible";
+        		myReturn = false;
+		  	}
+		  if (myReturn == false){
+		  	return false;
+		  } else {
+		  	// If all validations pass, return true to submit the form
+		  	sessionStorage.setItem('loggedin', 'true');
+		  	getStatus();
+		  	document.getElementById("ctl01").submit();
+  			return true;
+  		  }
+		}
+	</script>
 </body>
 </html>
