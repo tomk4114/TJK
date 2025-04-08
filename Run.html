@@ -5,9 +5,10 @@
 		Sandbox
 	</title>
 		<link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="./Scripts/Misc.js"></script>
 </head>
-<body>
-	<form method="post" action="./Rust2.html" id="ctl01">
+<body onload="getStatus()">
+	<form method="get" action="Testit.html" id="ctl01">
 	    <div class="page">
 	        <div class="header">
 	            <div class="title">
@@ -33,14 +34,73 @@
 			    <h2>
 			        Sandbox - A test area for Microcontroller WIFI development
 			    </h2>
-			    <h3></h3>
-			    <p>
-			        
-			    </p>
-			      <h3></h3>
-			    <p>
-			        
-			    </p>
+			   <table>
+	                <tr>
+	                	<td>
+	                     	<fieldset class="login" id="f1">
+				                <legend>Data received from <b>IOT</b> device:</legend>
+				                  	<p>
+				                    	<label for="ThingName" id="ThingNameLabel">Thing Name:</label>
+				                    	<input name="ThingName" type="text" id="ThingName" class="textEntry" />
+				                	</p>
+				                	<p>
+				                    	<label for="ThingID" id="ThingNameLabel">ThingID:</label>
+				                    	<input name="ThingID" type="text" id="ThingID" class="textEntry" />
+				                	</p>
+					                <p>
+					                    <label for="DeviceType" id="DeviceTypeLabel">Device Type:</label>
+					                    <input name="DeviceType" type="text" id="DeviceType" class="textEntry" />
+					                </p>
+					                <p>
+					                    <label for="Location" id="LocationLabel">Device Location:</label>
+					                    <input name="Location" type="text" id="Location" class="textEntry" />
+					                </p>
+					                <p>
+				                    	<label for="DataRcv" id="DataRcvLabel">Data Received:</label>
+				                    	<input name="DataRcv" type="text" id="DataRcv" class="textEntry" />
+				                	</p>
+				                	<p>
+				                    	<label for="AuxData" id="DataAuxLabel">Aux Data Rcv:</label>
+				                    	<input name="AuxData" type="text" id="AuxData" class="textEntry" />
+				                	</p>
+				                	<p class="submitButton">
+	                					<input type="button" name="SavetButton" value="Save" />
+	            					</p>
+	                		</fieldset>
+	                    </td>
+	                    <td>
+	                    	<fieldset class="register" id="f2">
+		                		<legend> Command Data or ACK back to <b>IOT</b> device:</legend>
+					                <p>
+				                    	<label for="HostName" id="HostNameLabel">Host Name:</label>
+				                    	<input name="HostName" type="text" id=HostName" class="textEntry" />
+				                	</p>
+				                	<p>
+				                    	<label for="ThingURL" id="ThingURLLabel">Thing URL:</label>
+				                    	<input name="ThingURL" type="text" id="ThingURL" class="textEntry" />
+				                	</p>
+					                <p>
+				                    	<label for="hThingName" id="ThingNameLabel">Thing Name:</label>
+				                    	<input name="hThingName" type="text" id="hThingName" class="textEntry" />
+				                	</p>
+				                	<p>
+				                    	<label for="HThingID" id="HThingNameLabel">ThingID:</label>
+				                    	<input name="HThingID" type="text" id="HThingID" class="textEntry" />
+					                <p>
+				                    	<label for="DataOut" id="DataOutLabel">Data Out:</label>
+				                    	<input name="DataOUt" type="text" id="DataOut" class="textEntry" />
+				                	</p>
+				                	<p>
+				                    	<label for="AuxDataout" id="AuxDataOutLabel">Aux Data Out:</label>
+				                    	<input name="AuxDataout" type="text" id="AuxDataOut" class="textEntry" />
+				                	</p>
+				                	<p class="submitButton">
+	                					<input type="submit" name="HostButton" value="Send" />
+	            					</p>
+		            		</fieldset>
+	                    </td>
+	                </tr>
+	            </table> 
 	        </div>
 	        <div class="clear">
 	        </div>
@@ -49,5 +109,8 @@
         
     	</div>
 	</form>
+	<script>
+		populateFormFromQueryString();
+	</script>
 </body>
 </html>
