@@ -4,10 +4,11 @@
 	<title>
 		Home Page
 	</title>
-		<link href="Styles/Site.css" rel="stylesheet" type="text/css" />   
+		<link href="Styles/Site.css" rel="stylesheet" type="text/css" />  
+		<script type="text/javascript" src="./Scripts/Misc.js"></script> 
 </head>
-<body>
-	<form method="get" action="./Rust2.html" id="ctl01">
+<body onload="getStatus()">
+	<form method="get" action="About.html" id="ctl01">
 	    <div class="page">
 	        <div class="header">
 	            <div class="title">
@@ -21,7 +22,7 @@
 	            <div class="clear hideSkiplink"> 
 		    		<div class="menu" id="NavigationMenu">
 						<ul>
-							<li class="level1"><a href="index.html">Home</a></li>
+							<li class="level1"><a href="Index.html">Home</a></li>
 							<li class="level1"><a href="About.html">About</a></li>
 							<li class="level1"><a href="Run.html">Sandbox</a></li>
 							<li class="level1"><a href="Contact.html">Contact Us</a></li>
